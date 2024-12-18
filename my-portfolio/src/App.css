@@ -1,0 +1,494 @@
+/* App.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary: #8e44ad;
+  --secondary: #6c3483;
+  --text: #2c3e50;
+  --background: #f8f4fc;
+  --purple-light: #9b59b6;
+  --purple-dark: #4a235a;
+  --card-bg: #ffffff;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --header-gradient: linear-gradient(135deg, var(--purple-dark), var(--primary));
+}
+
+/* Dark theme */
+[data-theme='dark'] {
+  --primary: #9b59b6;
+  --secondary: #8e44ad;
+  --text: #ecf0f1;
+  --background: #1a1a1a;
+  --purple-light: #a569bd;
+  --purple-dark: #6c3483;
+  --card-bg: #2c2c2c;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --header-gradient: linear-gradient(135deg, #2c2c2c, var(--primary));
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: var(--background);
+  color: var(--text);
+}
+
+header {
+  background: linear-gradient(135deg, var(--purple-dark), var(--primary));
+  color: #fff;
+  padding: 1.5rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  will-change: transform, opacity;
+  transition: all 0.3s ease;
+}
+
+header.scrolled {
+  background: var(--purple-dark);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+}
+
+nav a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+section {
+  padding: 6rem 2rem;
+  margin: 3rem auto;
+  max-width: 1200px;
+  border-radius: 20px;
+  background: var(--card-bg);
+  box-shadow: 0 10px 30px var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--primary), var(--purple-dark));
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+input, textarea {
+  padding: 1.2rem;
+  border: 2px solid #eee;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: #f8f9fa;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(142, 68, 173, 0.2);
+  transform: translateY(-2px);
+}
+
+button {
+  padding: 1.2rem 2.5rem;
+  background: linear-gradient(135deg, var(--primary), var(--purple-dark));
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+button:hover {
+  background: linear-gradient(135deg, var(--purple-dark), var(--primary));
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+  will-change: transform, opacity;
+}
+
+.project-card {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  will-change: transform, opacity;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.tech-tag {
+  background: linear-gradient(135deg, var(--primary), var(--purple-dark));
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, var(--primary), var(--purple-dark));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+main {
+  padding-top: 80px; /* Adjust based on your header height */
+}
+
+/* Page transition animations */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-transition-exit {
+  opacity: 1;
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+
+/* Add some spacing between sections */
+section {
+  margin-bottom: 4rem;
+}
+
+/* Improve mobile responsiveness */
+@media (max-width: 768px) {
+  section {
+    padding: 4rem 1rem;
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+form > * {
+  will-change: transform, opacity;
+}
+
+.project-link {
+  display: inline-block;
+  color: var(--primary);
+  text-decoration: none;
+  margin-top: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.project-link:hover {
+  color: var(--secondary);
+  transform: translateX(5px);
+}
+
+.bio p {
+  margin-bottom: 1rem;
+  color: var(--text);
+  font-size: 1.1rem;
+}
+
+.skill-tag {
+  background: var(--primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.social-links a {
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.social-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: width 0.3s ease;
+}
+
+.social-links a:hover::after {
+  width: 100%;
+}
+
+.project-card:hover {
+  border: 2px solid var(--primary);
+  transform: translateY(-5px);
+}
+
+/* Add these responsive styles */
+@media (max-width: 768px) {
+  header {
+    padding: 1rem;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  nav {
+    gap: 1rem;
+  }
+
+  nav a {
+    font-size: 0.9rem;
+    padding: 0.3rem 0.8rem;
+  }
+
+  section {
+    padding: 4rem 1rem;
+    margin: 2rem auto;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .article-card {
+    margin: 0 1rem;
+  }
+
+  .social-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .profile-container {
+    padding: 0 1rem;
+  }
+
+  .profile-image {
+    width: 200px;
+    height: 200px;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .bio p {
+    font-size: 1rem;
+  }
+
+  .skills {
+    justify-content: center;
+  }
+
+  form {
+    padding: 0 1rem;
+  }
+
+  input, textarea {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Add touch-friendly styles */
+@media (hover: none) {
+  .project-card:hover,
+  .skill-tag:hover,
+  button:hover {
+    transform: none;
+  }
+
+  nav a,
+  .project-link,
+  .social-link {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button:active,
+  .project-card:active,
+  .social-link:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Add PWA styles */
+@media (display-mode: standalone) {
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  header {
+    padding-top: max(1.5rem, env(safe-area-inset-top));
+  }
+}
+
+/* Optional: Style scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--purple-dark);
+}
+
+/* Add these styles for snowfall effect */
+.App {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Ensure content appears above snowfall */
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* Make snowfall more visible on light backgrounds */
+section {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Optional: Add a subtle gradient overlay to make snowfall more visible */
+.App::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.2)
+  );
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* Ensure header appears above snowfall */
+header {
+  position: fixed;
+  z-index: 1001;
+}
+
+/* Add smooth transition for theme changes */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Update input/textarea styles for dark mode */
+[data-theme='dark'] input,
+[data-theme='dark'] textarea {
+  background: #333;
+  color: var(--text);
+  border-color: #444;
+}
+
+/* Update card hover effects for dark mode */
+[data-theme='dark'] .project-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 5px 15px var(--shadow);
+}
+
+/* Update scrollbar for dark mode */
+[data-theme='dark'] ::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-thumb {
+  background: var(--primary);
+}
+
